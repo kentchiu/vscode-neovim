@@ -18,28 +18,30 @@ vim.keymap.set({ "n", "x" }, "M", "%") --middle of line
 -- map q: to nop in command mode
 vim.keymap.set("c", "q:", "<nop>", { silent = true })
 
--- Toggle Explorer. Or usnig CTRL + SHIFT + E for two way toggle
-local vscode = require("vscode")
-vim.keymap.set("n", "<leader>e", function()
-  vscode.action("workbench.view.explorer")
-end, { desc = "Toggle Explorer" })
+if vim.g.vscode then
+  -- Toggle Explorer. Or usnig CTRL + SHIFT + E for two way toggle
+  local vscode = require("vscode")
+  vim.keymap.set("n", "<leader>e", function()
+    vscode.action("workbench.view.explorer")
+  end, { desc = "Toggle Explorer" })
 
--- Find in Files (can be triggered by both <leader>/ and <leader>ff)
-vim.keymap.set("n", "<leader>/", function()
-  vscode.action("workbench.action.findInFiles")
-end, { desc = "Find in Files" })
+  -- Find in Files (can be triggered by both <leader>/ and <leader>ff)
+  vim.keymap.set("n", "<leader>/", function()
+    vscode.action("workbench.action.findInFiles")
+  end, { desc = "Find in Files" })
 
--- Quick Open Files (Ctrl+P)
-vim.keymap.set("n", "<leader>ff", function()
-  vscode.action("workbench.action.quickOpen")
-end, { desc = "Quick Open Files" })
+  -- Quick Open Files (Ctrl+P)
+  vim.keymap.set("n", "<leader>ff", function()
+    vscode.action("workbench.action.quickOpen")
+  end, { desc = "Quick Open Files" })
 
--- Rename Symbol
-vim.keymap.set("n", "<leader>cr", function()
-  vscode.call("editor.action.rename")
-end, { desc = "Rename Symbol" })
+  -- Rename Symbol
+  vim.keymap.set("n", "<leader>cr", function()
+    vscode.call("editor.action.rename")
+  end, { desc = "Rename Symbol" })
 
--- Format Document
-vim.keymap.set("n", "<leader>cf", function()
-  vscode.call("editor.action.formatDocument")
-end, { desc = "Format Document" })
+  -- Format Document
+  vim.keymap.set("n", "<leader>cf", function()
+    vscode.call("editor.action.formatDocument")
+  end, { desc = "Format Document" })
+end
